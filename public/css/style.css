@@ -123,13 +123,14 @@ section { padding: 88px 0; position: relative; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: rgba(7, 30, 23, 0.0);
+  background: rgba(7, 30, 23, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 18px rgba(0,0,0,.1);
   transition: background .25s ease, box-shadow .25s ease, padding .25s ease;
-  padding: 18px 0;
+  padding: 14px 0;
 }
 .site-header.scrolled {
-  background: rgba(7, 30, 23, 0.94);
-  backdrop-filter: blur(10px);
+  background: rgba(7, 30, 23, 0.97);
   box-shadow: 0 6px 24px rgba(0,0,0,.18);
   padding: 10px 0;
 }
@@ -309,7 +310,7 @@ section { padding: 88px 0; position: relative; }
 /* ---------------- Page banner (inner pages) ---------------- */
 .page-banner {
   position: relative;
-  padding: 150px 0 56px;
+  padding: 150px 0 28px;
   background:
     radial-gradient(900px 400px at 85% -10%, rgba(201,162,39,.20), transparent 60%),
     linear-gradient(160deg, var(--green-950) 0%, var(--green-900) 55%, var(--green-800) 100%);
@@ -350,6 +351,7 @@ section { padding: 88px 0; position: relative; }
   font-size: 1.02rem;
   margin: 0;
 }
+.page-banner + section { padding-top: 44px; }
 
 /* ---------------- Stat strip ---------------- */
 .stat-strip {
@@ -670,44 +672,46 @@ section { padding: 88px 0; position: relative; }
 .registro-banner p { color: rgba(255,255,255,.78); max-width: 560px; margin: 0 auto 28px; }
 
 /* ---------------- Comité ---------------- */
-.comite-grid {
+.comite-accordion .acc-body-inner { padding-left: 24px; }
+.comite-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 26px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
 }
-.comite-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 32px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-}
-.comite-card h3 {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 1.1rem;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--cream-dark);
-}
-.comite-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .comite-list li {
-  display: flex; align-items: center; gap: 12px;
-  font-size: .92rem;
-  color: var(--ink);
-  padding: 9px 12px;
-  border-radius: 9px;
-  background: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.comite-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold-400);
 }
 .comite-list li .avatar {
-  width: 30px; height: 30px;
+  width: 54px; height: 54px;
   border-radius: 50%;
-  background: var(--green-800);
+  background: linear-gradient(135deg, var(--green-800), var(--green-950));
   color: var(--gold-300);
-  font-family: var(--font-head);
-  font-size: .75rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  border: 2px solid var(--gold-400);
+  overflow: hidden;
 }
+.comite-list li .avatar img { width: 100%; height: 100%; object-fit: cover; }
+.comite-list li .avatar svg { width: 26px; height: 26px; }
+.member-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.member-name { font-family: var(--font-head); font-weight: 600; font-size: .92rem; color: var(--ink); line-height: 1.3; }
+.member-role { font-size: .72rem; color: var(--gold-600); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 .acc-head .step svg { display: block; }
 .acc-head .count {
   font-family: var(--font-body);
@@ -958,14 +962,14 @@ section { padding: 88px 0; position: relative; }
   .ejes-grid { grid-template-columns: 1fr; }
   .explore-grid { grid-template-columns: repeat(2, 1fr); }
   .pon-lead-grid { grid-template-columns: 1fr; }
-  .comite-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .stat-strip .wrap { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
   .stat:nth-child(3) { border-left: none; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
   .gallery-grid a { grid-column: span 1 !important; grid-row: span 1 !important; }
   .gallery-grid a:nth-child(1), .gallery-grid a:nth-child(2) { grid-row: span 1 !important; }
-  .page-banner { padding: 130px 0 44px; }
+  .page-banner { padding: 130px 0 22px; }
+  .page-banner + section { padding-top: 36px; }
 }
 
 @media (max-width: 860px) {
@@ -996,5 +1000,6 @@ section { padding: 88px 0; position: relative; }
   .extension-panel, .registro-banner, .pub-card { padding: 26px; }
   .pub-card { flex-direction: column; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
-  .page-banner { padding: 118px 0 36px; }
+  .page-banner { padding: 118px 0 18px; }
+  .page-banner + section { padding-top: 32px; }
 }
