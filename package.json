@@ -1,0 +1,16 @@
+{
+  "name": "congreso-csa-2026",
+  "version": "1.0.0",
+  "description": "Sitio web del Congreso de Ciencias Sociales y Administrativas 2026 - UNSIS",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
