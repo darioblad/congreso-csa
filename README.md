@@ -1,12 +1,13 @@
 # Congreso CSA 2026
 
-Sitio web del **Congreso de Ciencias Sociales y Administrativas: Gobierno, Ciudadanía y Tecnología para el Desarrollo** (UNSIS), 11-13 de noviembre de 2026. Recreación moderna y responsiva del sitio oficial (https://www.unsis.edu.mx/eventos/congresoCSA2026/), con todas sus secciones: inicio, ejes temáticos, fechas, ponencias, publicación, registro, comité organizador, galería y contacto.
+Sitio web del **Congreso de Ciencias Sociales y Administrativas: Gobierno, Ciudadanía y Tecnología para el Desarrollo** (UNSIS), 11-13 de noviembre de 2026. Recreación moderna y responsiva del sitio oficial (https://www.unsis.edu.mx/eventos/congresoCSA2026/), en formato multipágina: inicio, ejes temáticos, fechas, ponencias, publicación, registro, comité organizador, galería y contacto.
 
 ## Contenido
 
-- `public/index.html` — página completa de una sola vista con navegación por anclas.
+- `public/index.html` — inicio (hero, cifras clave, convocatoria y accesos a cada sección).
+- `public/ejes.html`, `fechas.html`, `ponencias.html`, `publicacion.html`, `registro.html`, `comite.html`, `galeria.html`, `contacto.html` — una página independiente por sección, enlazadas desde el menú principal y el pie de página.
 - `public/css/style.css` — sistema de diseño (paleta verde/dorado institucional).
-- `public/js/main.js` — menú móvil, scroll-spy, acordeón de ponencias, galería con lightbox.
+- `public/js/main.js` — menú móvil, acordeón (ponencias y comité), galería con lightbox (caption + contador).
 - `public/img/` — cartel oficial y fotografías de ediciones anteriores, optimizadas para web.
 - `server.js` / `package.json` — servidor estático mínimo (Express) para desplegar en Railway.
 
