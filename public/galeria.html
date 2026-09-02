@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var d=document.documentElement;if(localStorage.getItem('csaTheme')==='dark'){d.setAttribute('data-theme','dark');}var s=parseInt(localStorage.getItem('csaFontStep'),10);if(!isNaN(s)){s=Math.max(-2,Math.min(3,s));d.style.fontSize=(100+s*10)+'%';}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galería · Congreso CSA 2026 | UNSIS</title>
 <meta name="description" content="Instalaciones y actividades de ediciones anteriores del Congreso de Ciencias Sociales y Administrativas en la Universidad de la Sierra Sur.">
@@ -166,6 +167,34 @@
     </p>
   </div>
 </footer>
+
+<!-- ===================== ACCESSIBILITY WIDGET ===================== -->
+<div class="a11y-widget" id="a11yWidget">
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Opciones de accesibilidad">
+    <div class="a11y-panel-title">
+      Accesibilidad
+      <button type="button" id="a11yClose" aria-label="Cerrar panel de accesibilidad">&#10005;</button>
+    </div>
+    <div class="a11y-group">
+      <span class="label">Tamano del texto</span>
+      <div class="a11y-fontsize">
+        <button type="button" id="a11yFontDown" aria-label="Reducir tamano de texto">A&minus;</button>
+        <button type="button" id="a11yFontReset" aria-label="Restablecer tamano de texto">A</button>
+        <button type="button" id="a11yFontUp" aria-label="Aumentar tamano de texto">A+</button>
+      </div>
+    </div>
+    <div class="a11y-group">
+      <span class="label">Apariencia</span>
+      <button type="button" class="a11y-theme-btn" id="a11yThemeToggle" aria-pressed="false">
+        <span class="a11y-theme-icon" aria-hidden="true"></span>
+        <span id="a11yThemeLabel">Modo oscuro</span>
+      </button>
+    </div>
+  </div>
+  <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Abrir opciones de accesibilidad" aria-expanded="false" aria-controls="a11yPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.4" r="1.5" fill="currentColor" stroke="none"/><path d="M6.2 10.4c1.9-.75 3.8-1.1 5.8-1.1s3.9.35 5.8 1.1"/><path d="M12 9.3v4.5l-2.5 5.7"/><path d="M12 13.8l2.5 5.7"/></svg>
+  </button>
+</div>
 
 <script src="js/main.js"></script>
 </body>
