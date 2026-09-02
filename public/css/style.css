@@ -118,9 +118,25 @@ section { padding: 88px 0; position: relative; }
 }
 .btn-dark:hover { background: var(--green-700); transform: translateY(-2px); }
 
+/* ---------------- Top banner (UNSIS) ---------------- */
+.top-banner {
+  width: 100%;
+  background: var(--green-950);
+  overflow: hidden;
+}
+.top-banner-inner {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.top-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* ---------------- Header / Nav ---------------- */
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0; left: 0; right: 0;
   z-index: 1000;
   background: rgba(7, 30, 23, 0.92);
@@ -202,7 +218,7 @@ section { padding: 88px 0; position: relative; }
 /* ---------------- Hero ---------------- */
 .hero {
   position: relative;
-  padding: 168px 0 100px;
+  padding: 56px 0 100px;
   background:
     radial-gradient(1200px 600px at 85% -10%, rgba(201,162,39,.20), transparent 60%),
     linear-gradient(160deg, var(--green-950) 0%, var(--green-900) 45%, var(--green-800) 100%);
@@ -310,7 +326,7 @@ section { padding: 88px 0; position: relative; }
 /* ---------------- Page banner (inner pages) ---------------- */
 .page-banner {
   position: relative;
-  padding: 150px 0 28px;
+  padding: 48px 0 28px;
   background:
     radial-gradient(900px 400px at 85% -10%, rgba(201,162,39,.20), transparent 60%),
     linear-gradient(160deg, var(--green-950) 0%, var(--green-900) 55%, var(--green-800) 100%);
@@ -678,14 +694,14 @@ section { padding: 88px 0; position: relative; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
 }
 .comite-list li {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
+  gap: 20px;
+  padding: 18px 22px;
   border-radius: 14px;
   background: var(--white);
   border: 1px solid var(--border);
@@ -698,20 +714,20 @@ section { padding: 88px 0; position: relative; }
   border-color: var(--gold-400);
 }
 .comite-list li .avatar {
-  width: 54px; height: 54px;
+  width: 112px; height: 112px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--green-800), var(--green-950));
   color: var(--gold-300);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  border: 2px solid var(--gold-400);
+  border: 3px solid var(--gold-400);
   overflow: hidden;
 }
 .comite-list li .avatar img { width: 100%; height: 100%; object-fit: cover; }
-.comite-list li .avatar svg { width: 26px; height: 26px; }
-.member-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.member-name { font-family: var(--font-head); font-weight: 600; font-size: .92rem; color: var(--ink); line-height: 1.3; }
-.member-role { font-size: .72rem; color: var(--gold-600); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.comite-list li .avatar svg { width: 54px; height: 54px; }
+.member-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.member-name { font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--ink); line-height: 1.3; }
+.member-role { font-size: .8rem; color: var(--gold-600); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 .acc-head .step svg { display: block; }
 .acc-head .count {
   font-family: var(--font-body);
@@ -968,7 +984,7 @@ section { padding: 88px 0; position: relative; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
   .gallery-grid a { grid-column: span 1 !important; grid-row: span 1 !important; }
   .gallery-grid a:nth-child(1), .gallery-grid a:nth-child(2) { grid-row: span 1 !important; }
-  .page-banner { padding: 130px 0 22px; }
+  .page-banner { padding: 40px 0 22px; }
   .page-banner + section { padding-top: 36px; }
 }
 
@@ -994,12 +1010,15 @@ section { padding: 88px 0; position: relative; }
 
 @media (max-width: 600px) {
   section { padding: 64px 0; }
-  .hero { padding: 128px 0 70px; }
+  .hero { padding: 40px 0 70px; }
   .two-col-list { grid-template-columns: 1fr; }
   .explore-grid { grid-template-columns: 1fr; }
   .extension-panel, .registro-banner, .pub-card { padding: 26px; }
   .pub-card { flex-direction: column; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
-  .page-banner { padding: 118px 0 18px; }
+  .comite-list { grid-template-columns: 1fr; }
+  .comite-list li .avatar { width: 88px; height: 88px; }
+  .comite-list li .avatar svg { width: 42px; height: 42px; }
+  .page-banner { padding: 32px 0 18px; }
   .page-banner + section { padding-top: 32px; }
 }
