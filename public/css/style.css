@@ -725,13 +725,6 @@ section { padding: 88px 0; position: relative; }
 }
 .comite-list li .avatar img { width: 100%; height: 100%; object-fit: cover; }
 .comite-list li .avatar svg { width: 54px; height: 54px; }
-.comite-list li .avatar-initials { font-family: var(--font-head); font-weight: 700; font-size: 1.7rem; letter-spacing: .02em; }
-.comite-list li .avatar.avatar-c1 { background: linear-gradient(135deg, var(--green-800), var(--green-950)); color: var(--gold-300); }
-.comite-list li .avatar.avatar-c2 { background: linear-gradient(135deg, var(--green-500), var(--green-700)); color: var(--white); }
-.comite-list li .avatar.avatar-c3 { background: linear-gradient(135deg, var(--gold-500), var(--gold-600)); color: var(--green-950); }
-.comite-list li .avatar.avatar-c4 { background: linear-gradient(135deg, var(--green-600), var(--green-900)); color: var(--gold-300); }
-.comite-list li .avatar.avatar-c5 { background: linear-gradient(135deg, var(--red-600), #7a0202); color: var(--white); }
-.comite-list li .avatar.avatar-c6 { background: linear-gradient(135deg, var(--gold-300), var(--gold-500)); color: var(--green-950); }
 .member-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .member-name { font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--ink); line-height: 1.3; }
 .member-role { font-size: .8rem; color: var(--gold-600); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
@@ -1026,7 +1019,6 @@ section { padding: 88px 0; position: relative; }
   .comite-list { grid-template-columns: 1fr; }
   .comite-list li .avatar { width: 88px; height: 88px; }
   .comite-list li .avatar svg { width: 42px; height: 42px; }
-  .comite-list li .avatar-initials { font-size: 1.35rem; }
   .page-banner { padding: 32px 0 18px; }
   .page-banner + section { padding-top: 32px; }
   .ext-table, .ext-table tbody, .ext-table tr, .ext-table td { display: block; width: 100%; }
