@@ -106,11 +106,41 @@
   }
 
   /* ---------------- Accessibility widget ---------------- */
+  document.body.insertAdjacentHTML("beforeend", [
+    '<div class="a11y-widget" id="a11yWidget">',
+    '  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Opciones de accesibilidad" tabindex="-1">',
+    '    <div class="a11y-panel-title">',
+    "      Accesibilidad",
+    '      <button type="button" id="a11yClose" aria-label="Cerrar panel de accesibilidad">&#10005;</button>',
+    "    </div>",
+    '    <div class="a11y-group">',
+    '      <span class="label">Tamano del texto</span>',
+    '      <div class="a11y-fontsize">',
+    '        <button type="button" id="a11yFontDown" aria-label="Reducir tamano de texto">A&minus;</button>',
+    '        <button type="button" id="a11yFontReset" aria-label="Restablecer tamano de texto">A</button>',
+    '        <button type="button" id="a11yFontUp" aria-label="Aumentar tamano de texto">A+</button>',
+    "      </div>",
+    "    </div>",
+    '    <div class="a11y-group">',
+    '      <span class="label">Apariencia</span>',
+    '      <button type="button" class="a11y-theme-btn" id="a11yThemeToggle" aria-pressed="false">',
+    '        <span class="a11y-theme-icon" aria-hidden="true"></span>',
+    '        <span id="a11yThemeLabel">Modo oscuro</span>',
+    "      </button>",
+    "    </div>",
+    "  </div>",
+    '  <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Abrir opciones de accesibilidad" aria-expanded="false" aria-controls="a11yPanel">',
+    '    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.4" r="1.5" fill="currentColor" stroke="none"/><path d="M6.2 10.4c1.9-.75 3.8-1.1 5.8-1.1s3.9.35 5.8 1.1"/><path d="M12 9.3v4.5l-2.5 5.7"/><path d="M12 13.8l2.5 5.7"/></svg>',
+    "  </button>",
+    "</div>"
+  ].join(""));
+
   var a11yWidget = document.getElementById("a11yWidget");
   if (a11yWidget) {
     var root = document.documentElement;
     var FONT_MIN = -2, FONT_MAX = 3;
 
+    var a11yPanel = document.getElementById("a11yPanel");
     var a11yToggle = document.getElementById("a11yToggle");
     var a11yClose = document.getElementById("a11yClose");
     var fontDown = document.getElementById("a11yFontDown");
@@ -119,6 +149,7 @@
     var themeToggle = document.getElementById("a11yThemeToggle");
     var themeLabel = document.getElementById("a11yThemeLabel");
     var themeIcon = themeToggle.querySelector(".a11y-theme-icon");
+    var lastFocused = null;
 
     var sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
     var moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
@@ -157,13 +188,22 @@
       applyTheme(dark);
     }
 
+    function getFocusable() {
+      return Array.prototype.slice.call(
+        a11yPanel.querySelectorAll("button:not(:disabled)")
+      );
+    }
     function openPanel() {
+      lastFocused = document.activeElement;
       a11yWidget.classList.add("open");
       a11yToggle.setAttribute("aria-expanded", "true");
+      a11yPanel.focus();
     }
-    function closePanel() {
+    function closePanel(restoreFocus) {
       a11yWidget.classList.remove("open");
       a11yToggle.setAttribute("aria-expanded", "false");
+      if (restoreFocus !== false && lastFocused) lastFocused.focus();
+      lastFocused = null;
     }
 
     applyFontStep(getFontStep());
@@ -175,10 +215,27 @@
     });
     a11yClose.addEventListener("click", closePanel);
     document.addEventListener("click", function (e) {
-      if (a11yWidget.classList.contains("open") && !a11yWidget.contains(e.target)) closePanel();
+      if (a11yWidget.classList.contains("open") && !a11yWidget.contains(e.target)) closePanel(false);
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && a11yWidget.classList.contains("open")) closePanel();
+      if (!a11yWidget.classList.contains("open")) return;
+      if (e.key === "Escape") {
+        closePanel();
+        return;
+      }
+      if (e.key === "Tab") {
+        var focusable = getFocusable();
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
     fontDown.addEventListener("click", function () { setFontStep(getFontStep() - 1); });
     fontUp.addEventListener("click", function () { setFontStep(getFontStep() + 1); });
