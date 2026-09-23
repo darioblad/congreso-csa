@@ -626,7 +626,7 @@ section { padding: 88px 0; position: relative; }
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 2000;
   align-items: center;
   justify-content: center;
   padding: 24px;
@@ -641,7 +641,9 @@ section { padding: 88px 0; position: relative; }
   max-width: 640px;
   width: 100%;
   max-height: 86vh;
+  max-height: 86dvh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 34px;
 }
 .keynote-modal-close {
@@ -1124,8 +1126,16 @@ section { padding: 88px 0; position: relative; }
   .ext-table td { padding: 3px 0; }
   .ext-table td:first-child { font-size: .8rem; color: rgba(255,255,255,.6); }
   .ext-table td:last-child { text-align: left; font-size: .98rem; }
-  .keynote-modal-dialog { padding: 24px; max-height: 92vh; }
-  .keynote-modal-head { flex-direction: column; text-align: center; padding-right: 0; }
+  .keynote-modal { padding: 12px; }
+  .keynote-modal-dialog { padding: 20px 20px 24px; max-height: 90vh; max-height: 90dvh; }
+  .keynote-modal-close {
+    position: sticky;
+    top: 0;
+    margin: -6px -6px 0 auto;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+  }
+  .keynote-modal-head { flex-direction: column; text-align: center; padding-right: 0; margin-top: -24px; }
 }
 
 /* ============================================================

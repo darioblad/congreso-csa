@@ -126,7 +126,8 @@
       keynoteModal.classList.add("open");
       keynoteModal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-      kmClose.focus();
+      keynoteModal.querySelector(".keynote-modal-dialog").scrollTop = 0;
+      kmClose.focus({ preventScroll: true });
     }
     function closeKeynoteModal() {
       keynoteModal.classList.remove("open");
