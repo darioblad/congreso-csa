@@ -105,6 +105,48 @@
     });
   }
 
+  /* ---------------- Ponentes magistrales: modal de semblanza ---------------- */
+  var keynoteModal = document.getElementById("keynoteModal");
+  if (keynoteModal) {
+    var kmOverlay = document.getElementById("keynoteModalOverlay");
+    var kmClose = document.getElementById("keynoteModalClose");
+    var kmImg = document.getElementById("keynoteModalImg");
+    var kmName = document.getElementById("keynoteModalName");
+    var kmBody = document.getElementById("keynoteModalBody");
+    var kmLastFocused = null;
+
+    function openKeynoteModal(card) {
+      kmLastFocused = document.activeElement;
+      var photo = card.querySelector(".keynote-photo img");
+      var bio = card.querySelector(".keynote-bio");
+      kmImg.src = photo.src;
+      kmImg.alt = photo.alt;
+      kmName.textContent = card.getAttribute("data-name");
+      kmBody.innerHTML = bio.innerHTML;
+      keynoteModal.classList.add("open");
+      keynoteModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      kmClose.focus();
+    }
+    function closeKeynoteModal() {
+      keynoteModal.classList.remove("open");
+      keynoteModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (kmLastFocused) kmLastFocused.focus();
+    }
+    document.querySelectorAll(".keynote-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        openKeynoteModal(btn.closest(".keynote-card"));
+      });
+    });
+    kmClose.addEventListener("click", closeKeynoteModal);
+    kmOverlay.addEventListener("click", closeKeynoteModal);
+    document.addEventListener("keydown", function (e) {
+      if (!keynoteModal.classList.contains("open")) return;
+      if (e.key === "Escape") closeKeynoteModal();
+    });
+  }
+
   /* ---------------- Accessibility widget ---------------- */
   document.body.insertAdjacentHTML("beforeend", [
     '<div class="a11y-widget" id="a11yWidget">',
