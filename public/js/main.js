@@ -48,6 +48,17 @@
         i.classList.remove("open");
       });
       if (!wasOpen) item.classList.add("open");
+
+      // Programa: al abrir un día, el día anterior se cierra y la página
+      // quedaba al final del día abierto. Desplaza al inicio del día.
+      if (!wasOpen && item.closest(".prog-accordion")) {
+        requestAnimationFrame(function () {
+          var header = document.querySelector(".site-header");
+          var offset = (header ? header.offsetHeight : 0) + 12;
+          var top = item.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: top });
+        });
+      }
     });
   });
 
