@@ -1443,3 +1443,9 @@ section { padding: 88px 0; position: relative; }
   [data-theme="dark"] .prog-table { background: transparent; }
   [data-theme="dark"] .prog-table tr { background: #122a20; border-color: rgba(255,255,255,.1); }
 }
+
+/* Títulos de ponencias y conferencias (segunda columna) */
+.prog-table tr.p-talk td.p-mid { color: var(--green-500); font-weight: 600; }
+.prog-table .p-title { color: var(--green-500); font-weight: 600; }
+[data-theme="dark"] .prog-table tr.p-talk td.p-mid,
+[data-theme="dark"] .prog-table .p-title { color: var(--gold-300); }
