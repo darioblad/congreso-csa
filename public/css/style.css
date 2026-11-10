@@ -1292,3 +1292,154 @@ section { padding: 88px 0; position: relative; }
 [data-theme="dark"] .a11y-fontsize button,
 [data-theme="dark"] .a11y-theme-btn { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); color: #e8ece5; }
 [data-theme="dark"] .a11y-group .label { color: #9aa39a; }
+
+/* ============================================================
+   Menú: ajuste de espacio con el enlace "Programa"
+   ============================================================ */
+@media (max-width: 1320px) and (min-width: 861px) {
+  .nav-links { gap: 2px; }
+  .nav-links a { padding: 8px 10px; font-size: .84rem; }
+  .nav-cta { margin-left: 0; }
+  .nav-cta .btn { padding: 9px 16px; }
+}
+@media (max-width: 1060px) and (min-width: 861px) {
+  .brand-text { display: none; }
+}
+
+/* ============================================================
+   Programa
+   ============================================================ */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.prog-download { display: flex; justify-content: center; margin-bottom: 30px; }
+.prog-heading {
+  text-align: center;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  letter-spacing: .06em;
+  margin-bottom: 22px;
+}
+.prog-accordion { display: flex; flex-direction: column; gap: 14px; }
+.prog-accordion .acc-head { font-size: 1.08rem; padding: 20px 24px; }
+.prog-accordion .acc-head .step { width: 38px; height: 38px; font-size: .92rem; }
+.prog-accordion .acc-item.open .acc-body { max-height: none; }
+.prog-accordion .acc-body-inner { padding: 0 18px 22px; }
+
+.prog-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: .9rem;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--white);
+}
+.prog-table td, .prog-table th {
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  vertical-align: middle;
+  text-align: center;
+}
+.prog-table td.p-time {
+  width: 16%;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--green-800);
+  white-space: nowrap;
+  background: var(--cream);
+}
+.prog-table td.p-mid { width: 49%; }
+.prog-table td.p-authors, .prog-table td.p-side { width: 35%; }
+.prog-table td.p-authors { text-align: left; }
+.prog-table td.p-authors span { display: block; }
+.prog-table td.p-authors span + span { margin-top: 2px; }
+
+/* Bloques internos de conferencias */
+.prog-table .p-kind,
+.prog-table .p-title,
+.prog-table .p-names,
+.prog-table .p-affil,
+.prog-table .p-label,
+.prog-table .p-side-block { display: block; }
+.prog-table .p-kind { color: var(--ink-soft); }
+.prog-table .p-title { margin: 8px 0 10px; color: var(--ink); }
+.prog-table .p-names strong { display: block; color: var(--green-900); }
+.prog-table .p-names + .p-affil { margin-bottom: 8px; }
+.prog-table .p-affil { color: var(--ink-soft); font-size: .86rem; }
+.prog-table .p-affil:last-child { margin-bottom: 0; }
+.prog-table .p-label { color: var(--ink-soft); margin-top: 4px; }
+.prog-table .p-side-block strong { display: block; color: var(--green-900); }
+.prog-table .p-side-block + .p-side-block { margin-top: 14px; }
+.prog-table .p-closing strong { display: block; color: var(--green-900); }
+
+/* Filas especiales */
+.prog-table tr.p-break td:last-child { font-family: var(--font-head); color: var(--green-900); }
+.prog-table tr.p-qa td:last-child { color: var(--ink-soft); font-style: italic; }
+.prog-table tr.p-sim th {
+  background: var(--green-900);
+  color: var(--gold-300);
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: .03em;
+  padding: 14px;
+  border-color: var(--green-900);
+}
+.prog-table tr.p-mesa th {
+  background: var(--cream-dark);
+  color: var(--green-900);
+  font-weight: 600;
+  font-size: .86rem;
+  padding: 12px 14px;
+  border-top: 3px solid var(--gold-500);
+}
+.prog-table tr.p-mesa th span { display: block; }
+.prog-table .p-mesa-title {
+  font-family: var(--font-head);
+  font-size: .98rem;
+  color: var(--green-900);
+  margin-bottom: 2px;
+}
+
+@media (max-width: 720px) {
+  .prog-accordion .acc-head { padding: 16px; font-size: .98rem; }
+  .prog-accordion .acc-head .count { display: block; margin: 2px 0 0 50px; }
+  .prog-accordion .acc-head > span:first-child { display: flex; flex-wrap: wrap; align-items: center; }
+  .prog-accordion .acc-body-inner { padding: 0 10px 16px; }
+  .prog-table, .prog-table tbody, .prog-table tr, .prog-table td, .prog-table th { display: block; width: 100% !important; }
+  .prog-table { background: transparent; border: none; }
+  .prog-table tr { margin-bottom: 8px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: var(--white); }
+  .prog-table td, .prog-table th { border: none; padding: 10px 14px; }
+  .prog-table td.p-time {
+    white-space: normal;
+    text-align: left;
+    padding: 7px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .prog-table td.p-authors { padding-top: 0; }
+  .prog-table td.p-side { border-top: 1px dashed var(--border); }
+  .prog-table tr.p-talk td.p-mid { text-align: left; font-weight: 500; }
+  .prog-table tr.p-sim, .prog-table tr.p-mesa { margin-top: 14px; }
+  .prog-table tr.p-sim { border-color: var(--green-900); }
+}
+
+[data-theme="dark"] .prog-table { background: #122a20; color: #d9ddd6; }
+[data-theme="dark"] .prog-table td, [data-theme="dark"] .prog-table th { border-color: rgba(255,255,255,.1); }
+[data-theme="dark"] .prog-table td.p-time { background: #0f231b; color: var(--gold-300); }
+[data-theme="dark"] .prog-table .p-title { color: #e8ece5; }
+[data-theme="dark"] .prog-table .p-kind,
+[data-theme="dark"] .prog-table .p-affil,
+[data-theme="dark"] .prog-table .p-label,
+[data-theme="dark"] .prog-table tr.p-qa td:last-child { color: #9aa39a; }
+[data-theme="dark"] .prog-table .p-names strong,
+[data-theme="dark"] .prog-table .p-side-block strong,
+[data-theme="dark"] .prog-table .p-closing strong,
+[data-theme="dark"] .prog-table tr.p-break td:last-child { color: #e8ece5; }
+[data-theme="dark"] .prog-table tr.p-mesa th { background: #183a2c; color: #e8ece5; }
+[data-theme="dark"] .prog-table .p-mesa-title { color: var(--gold-300); }
+[data-theme="dark"] .prog-table tr.p-sim th { background: #071e17; border-color: #071e17; }
+@media (max-width: 720px) {
+  [data-theme="dark"] .prog-table { background: transparent; }
+  [data-theme="dark"] .prog-table tr { background: #122a20; border-color: rgba(255,255,255,.1); }
+}
